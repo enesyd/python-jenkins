@@ -13,7 +13,7 @@ class BaseClass(object):
 
     def __init__(self, driver):
         self.driver = driver
-        self.wait = WebDriverWait(self.driver, 45)
+        self.wait = WebDriverWait(self.driver, 30)
 
     def wait_for_element(self, selector):
         """
