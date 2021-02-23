@@ -46,17 +46,15 @@ class DecathlonsgProductPage:
         """
         if self.methods.exist_element(self.ADD_TO_CART_EXISTS):
             try:
-                self.driver.execute_script("window.scrollTo(0, 425)")
-                self.methods.presence_of_element_located(self.ADD_TO_CART).click()
-                assert self.methods.exist_element(self.ADDED_TO_CART), "ADD_TO_CART is not clickable"
-            except:
                 if self.methods.exist_element(self.IFRAME_IS_OPENED):
                     iframe_name = self.methods.presence_of_element_located(self.IFRAME).get_attribute('name')
                     self.driver.switch_to.frame(iframe_name)
                     self.methods.wait_for_element(DecathlonsgProductPage.CLOSE_POPUP_BTN).click()
                     self.driver.switch_to.default_content()
                     self.methods.wait_for_element(self.ADD_TO_CART_ICON).click()
-                else:
-                    self.methods.wait_for_element(self.ADD_TO_CART_ICON).click()
+                assert self.methods.exist_element(self.ADDED_TO_CART), "ADD_TO_CART is not clickable"
+            except:
+                self.driver.execute_script("window.scrollTo(0, 400)")
+                self.methods.wait_for_element(self.ADD_TO_CART_ICON).click()
         else:
             assert self.methods.wait_for_element(self.ADD_TO_CART_EXISTS).is_displayed(), "No add to cart button"
