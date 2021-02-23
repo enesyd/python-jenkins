@@ -23,7 +23,7 @@ class DecathlonsgHappyPath(unittest.TestCase):
       """
 
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        self.driver = webdriver.Chrome("C:/Users/enes.yenidogan/Desktop/chromedriver.exe")
         self.driver.maximize_window()
         self.methods = BaseClass(self.driver)
         self.decathlonsg_main = DecathlonsgMain(self.driver)
