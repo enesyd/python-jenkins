@@ -1,8 +1,14 @@
 import unittest
-from test.decathlonsg_setup import Setup
+from selenium import webdriver
+from base.page_base import BaseClass
+from page.cart_page import DecathlonsgCartPage
+from page.category_page import DecathlonsgCategoryPage
+from page.login_page import DecathlonsgLogin
+from page.main_page import DecathlonsgMain
+from page.product_page import DecathlonsgProductPage
 
 
-class DecathlonsgHappyPath(unittest.TestCase, Setup):
+class DecathlonsgHappyPath(unittest.TestCase):
     """Test case is:
       1. Go to given website
       2. Click login page button
@@ -17,7 +23,14 @@ class DecathlonsgHappyPath(unittest.TestCase, Setup):
       """
 
     def setUp(self):
-        Setup.__init__(self)
+        self.driver = webdriver.Chrome()
+        self.driver.maximize_window()
+        self.methods = BaseClass(self.driver)
+        self.decathlonsg_main = DecathlonsgMain(self.driver)
+        self.decathlonsg_login = DecathlonsgLogin(self.driver)
+        self.decathlonsg_category = DecathlonsgCategoryPage(self.driver)
+        self.decathlonsg_product = DecathlonsgProductPage(self.driver)
+        self.decathlonsg_cart = DecathlonsgCartPage(self.driver)
 
     def test_decathlonsg(self):
         self.decathlonsg_main.navigate_to_home_page()
