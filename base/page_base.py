@@ -86,6 +86,13 @@ class BaseClass(object):
             except TimeoutException:
                 return False
 
+    def presence_of_element_located(self, selector):
+        """
+        Waits until a element i present on the DOM of a page and visible then returns element
+        :param selector: Locator of the desired element
+        """
+        return self.wait.until(ec.presence_of_element_located(selector))
+
     def set_cookie(self, name, value):
         """
         Sets a cookie in given variables

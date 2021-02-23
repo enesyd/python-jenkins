@@ -48,7 +48,15 @@ class DecathlonsgMain:
 
     def navigate_to_cart_page(self):
         """
-        Navigates to the cart page
+        Navigates to the cart page.
 
+        if self.methods.exist_element(DecathlonsgProductPage.IFRAME_IS_OPENED):
+            iframe_name = self.methods.presence_of_element_located(self.IFRAME).get_attribute('name')
+            self.driver.switch_to.frame(iframe_name)
+            self.methods.wait_for_element(DecathlonsgProductPage.CLOSE_POPUP_BTN).click()
+            self.driver.switch_to.default_content()
+            self.methods.wait_for_element(self.CART_HEADER).click()
+        else:
+            self.methods.wait_for_element(self.CART_HEADER).click()
         """
-        self.methods.wait_for_element(self.CART_HEADER).click()
+        self.driver.get("https://www.decathlon.sg/cart")
