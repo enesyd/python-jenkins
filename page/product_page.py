@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from base.page_base import BaseClass
 from time import sleep
 
+
 class DecathlonsgProductPage:
     """DecathlonsgProduct is select exits size, check stock info and add product to cart."""
 
@@ -12,7 +13,7 @@ class DecathlonsgProductPage:
     ADD_TO_CART_ICON = (By.CSS_SELECTOR, '.bag-icon')
     CLOSE_POPUP_BTN = (By.ID, 'logo')
     MINIFY_POPUP_BTN = (By.CSS_SELECTOR, '[aria-label="close"]')
-    ADDED_TO_CART = (By.CSS_SELECTOR, '.cart_block_no_products.unvisible.empty')
+    ADDED_TO_CART = (By.CSS_SELECTOR, '.sc-cart-summary-line')
     OUT_OF_STOCK = (By.XPATH, './/*[text()=" There are not enough products in stock "]')
     IFRAME_IS_OPENED = (By.CSS_SELECTOR, '.anchor_right.fb_customer_chat_bounce_in_v2')
     IFRAME = (By.CSS_SELECTOR, '[data-testid="dialog_iframe"]')
@@ -44,13 +45,12 @@ class DecathlonsgProductPage:
         Adds product to the cart page and check is it added successfully.
 
         """
-        sleep(6)
         if self.methods.exist_element(self.ADD_TO_CART_EXISTS):
             try:
                 if self.methods.exist_element(self.IFRAME_IS_OPENED):
                     iframe_name = self.methods.presence_of_element_located(self.IFRAME).get_attribute('name')
                     self.driver.switch_to.frame(iframe_name)
-                    self.methods.wait_for_element(DecathlonsgProductPage.CLOSE_POPUP_BTN).click()
+                    self.methods.wait_for_element(DecathlonsgProductPage.MINIFY_POPUP_BTN).click()
                     self.driver.switch_to.default_content()
                     self.methods.wait_for_element(self.ADD_TO_CART_ICON).click()
                 assert self.methods.exist_element(self.ADDED_TO_CART), "ADD_TO_CART is not clickable"
