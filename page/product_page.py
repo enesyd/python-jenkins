@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from base.page_base import BaseClass
-
+from time import sleep
 
 class DecathlonsgProductPage:
     """DecathlonsgProduct is select exits size, check stock info and add product to cart."""
@@ -44,6 +44,7 @@ class DecathlonsgProductPage:
         Adds product to the cart page and check is it added successfully.
 
         """
+        sleep(6)
         if self.methods.exist_element(self.ADD_TO_CART_EXISTS):
             try:
                 if self.methods.exist_element(self.IFRAME_IS_OPENED):
