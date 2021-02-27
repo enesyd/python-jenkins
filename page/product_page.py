@@ -44,7 +44,6 @@ class DecathlonsgProductPage:
         Adds product to the cart page and check is it added successfully.
 
         """
-        self.driver.refresh()
         if self.methods.exist_element(self.ADD_TO_CART_EXISTS):
             try:
                 if self.methods.exist_element(self.IFRAME_IS_OPENED):
