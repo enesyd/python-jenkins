@@ -53,6 +53,7 @@ class DecathlonsgProductPage:
                     self.methods.wait_for_element(DecathlonsgProductPage.MINIFY_POPUP_BTN).click()
                     self.driver.switch_to.default_content()
                     self.methods.wait_for_element(self.ADD_TO_CART_ICON).click()
+                self.methods.wait_for_element(self.ADD_TO_CART_ICON).click()
                 assert self.methods.exist_element(self.ADDED_TO_CART), "ADD_TO_CART is not clickable"
             except:
                 self.driver.execute_script("window.scrollTo(0, 400)")
