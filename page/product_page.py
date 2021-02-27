@@ -45,6 +45,7 @@ class DecathlonsgProductPage:
 
         """
         if self.methods.exist_element(self.ADD_TO_CART_EXISTS):
+            self.driver.refresh()
             try:
                 if self.methods.exist_element(self.IFRAME_IS_OPENED):
                     iframe_name = self.methods.presence_of_element_located(self.IFRAME).get_attribute('name')
