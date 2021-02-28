@@ -1,4 +1,4 @@
-import unittest
+from mainbase.base_test import *
 from selenium import webdriver
 from base.page_base import BaseClass
 from page.cart_page import DecathlonsgCartPage
@@ -8,7 +8,10 @@ from page.main_page import DecathlonsgMain
 from page.product_page import DecathlonsgProductPage
 
 
-class DecathlonsgHappyPath(unittest.TestCase):
+@Owner.enes_yenidogan
+@Priority.LOW
+@decorator_loader(error_logger)
+class DecathlonsgHappyPath(BaseTest):
     """Test case is:
       1. Go to given website
       2. Click login page button
@@ -48,7 +51,3 @@ class DecathlonsgHappyPath(unittest.TestCase):
 
     def tearDown(self):
         self.driver.quit()
-
-
-if __name__ == '__main__':
-    unittest.main()
