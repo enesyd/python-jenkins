@@ -1,3 +1,4 @@
+from selenium.common.exceptions import TimeoutException, ElementClickInterceptedException
 from selenium.webdriver.common.by import By
 from time import sleep
 from base.page_base import BaseClass
@@ -35,11 +36,10 @@ class DecathlonsgMain:
         """
         sleep(3)
         try:
-            self.methods.hover_element(self.SECOND_LOGIN_BUTTON)
-            self.methods.wait_for_element(self.LOGIN_BUTTON).click()
-        except:
             self.methods.hover_element(self.LOGIN_HEADER)
             self.methods.wait_for_element(self.LOGIN_BUTTON).click()
+        except (TimeoutException, ElementClickInterceptedException):
+            self.navigate_to_login_page()
 
     def navigate_to_random_category_page(self):
         """
