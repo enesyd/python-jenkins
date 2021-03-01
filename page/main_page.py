@@ -35,11 +35,11 @@ class DecathlonsgMain:
         """
         sleep(3)
         try:
-            self.methods.hover_element(self.LOGIN_HEADER)
+            self.methods.hover_element(self.SECOND_LOGIN_BUTTON)
             self.methods.wait_for_element(self.LOGIN_BUTTON).click()
         except:
             self.methods.hover_element(self.LOGIN_HEADER)
-            self.methods.wait_for_element(self.SECOND_LOGIN_BUTTON).click()
+            self.methods.wait_for_element(self.LOGIN_BUTTON).click()
 
     def navigate_to_random_category_page(self):
         """
