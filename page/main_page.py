@@ -10,6 +10,7 @@ class DecathlonsgMain:
     HOMEPAGE_CONTROL = (By.CSS_SELECTOR, '.elementor-container.elementor-column-gap-default')
     LOGIN_HEADER = (By.CSS_SELECTOR, '#header-user-btn')
     LOGIN_BUTTON = (By.CSS_SELECTOR, '.elementor-button-text')
+    SECOND_LOGIN_BUTTON = (By.CSS_SELECTOR, 'elementor-button-content-wrapper')
     MAIN_CATS_CONTAINER_HEADER = (By.XPATH, '//*[contains(@class, "cbp-has-submeu")]')
     SUB_CATS_CONTAINER_HEADER = (By.XPATH, '//*[contains(@class, "cbp-category-title")]')
     CART_HEADER = (By.ID, 'button_cart_cart')
@@ -32,9 +33,13 @@ class DecathlonsgMain:
         Navigates to the login page
 
         """
-        sleep(2)
-        self.methods.hover_element(self.LOGIN_HEADER)
-        self.methods.wait_for_element(self.LOGIN_BUTTON).click()
+        sleep(3)
+        try:
+            self.methods.hover_element(self.LOGIN_HEADER)
+            self.methods.wait_for_element(self.LOGIN_BUTTON).click()
+        except:
+            self.methods.hover_element(self.LOGIN_HEADER)
+            self.methods.wait_for_element(self.SECOND_LOGIN_BUTTON).click()
 
     def navigate_to_random_category_page(self):
         """
